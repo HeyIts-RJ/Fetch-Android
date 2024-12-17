@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -57,11 +58,18 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // Mocking with Mockito
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    // Coroutines testing library
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    // Retrofit with interceptor
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
 
-
+    // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
@@ -72,8 +80,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     kapt(libs.androidx.lifecycle.compiler)
 
-
-    // Jetpack Compose integration
+    // Jetpack Compose integration for NavGraph
     implementation(libs.androidx.navigation.compose)
 
 }

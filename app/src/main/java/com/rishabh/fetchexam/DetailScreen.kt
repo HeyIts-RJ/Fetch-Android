@@ -32,7 +32,7 @@ fun DetailScreen(listId: Int, viewModel: MainActivityViewModel) {
     // Extract numeric value from the name field for sorting (Numerical Sorting logic)
 //    val itemsForListId = groupedData?.get(listId)?.sortedWith(
 //        compareBy { item ->
-//            item.name.toIntOrNull() ?: Int.MAX_VALUE
+//            item.name?.toIntOrNull() ?: Int.MAX_VALUE
 //        }
 //    )
 
@@ -65,11 +65,13 @@ fun DetailScreen(listId: Int, viewModel: MainActivityViewModel) {
                     modifier = Modifier.fillMaxSize()
                 ) {
                     items(itemsForListId) { item ->
-                        Text(
-                            text = item.name,
-                            style = MaterialTheme.typography.bodyLarge,
-                            modifier = Modifier.padding(16.dp)
-                        )
+                        item.name?.let {
+                            Text(
+                                text = it,
+                                style = MaterialTheme.typography.bodyLarge,
+                                modifier = Modifier.padding(16.dp)
+                            )
+                        }
                     }
                 }
             }

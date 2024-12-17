@@ -16,7 +16,7 @@ class ItemRepository(private val apiService: ApiService) {
                 val items = response.body() ?: return null
 
                 // Filter out items with blank or null names
-                val filteredItems = items.filter { it.name != null && it.name != "" }
+                val filteredItems = filterItems(items)
 
                 // Sort by listId first, then by name
                 val sortedItems = filteredItems.sortedWith(compareBy({ it.listId }, { it.name }))
@@ -31,5 +31,9 @@ class ItemRepository(private val apiService: ApiService) {
             Log.e("Item Repository", "getItems: ${e.printStackTrace()}")
             return null
         }
+    }
+
+    fun filterItems(items: List<Item>): List<Item> {
+        return items.filter { it.name != null && it.name.isNotBlank() }
     }
 }
